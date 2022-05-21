@@ -10,25 +10,21 @@ function createDeck() {
   let deck = new Array();
   for (let i = 0; i < suits.length; i++) {
     for (let x = 0; x < values.length; x++) {
-      let card = { value: values[x], suit: suits[i] };
+      let card = { 
+        value: values[x], 
+        suit: suits[i] 
+      };
       deck.push(card);
     }
   }
   return deck;
 }
 
-function countCardsInDeck(deck) {
-  let cardCount = deck.length;
-  return cardCount;
-}
-
-let deck = createDeck();
-let cardCount = countCardsInDeck(deck);
-
 const FrenchDeck = {
-  cards: deck,
-  cardCount: cardCount
-  // shuffle: 
+  deck: createDeck(),
+  cardCount: function() {
+    return this.deck.length;
+  }
 }
 
 export default FrenchDeck;
