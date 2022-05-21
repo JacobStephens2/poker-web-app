@@ -1,1 +1,0 @@
-import FrenchDeck from "./components/FrenchDeck";
