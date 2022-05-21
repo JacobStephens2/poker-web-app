@@ -20,11 +20,6 @@ function createDeck() {
   return deck;
 }
 
-const FrenchDeck = {
-  deck: createDeck(),
-  cardCount: function() {
-    return this.deck.length;
-  }
-}
+const FrenchDeck = createDeck();
 
 export default FrenchDeck;
