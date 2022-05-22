@@ -1,7 +1,7 @@
 // This deck is an array of objects
-import FrenchDeck from "/components/FrenchDeck.js";
+import FrenchDeck from "/gameComponents/FrenchDeck.js";
 // Draw component returns a random index value of the array passed into it
-import DrawComponent from "/actions/DrawComponent.js";
+import DrawComponent from "/gameActions/DrawComponent.js";
 
 // Function to draw a card
 function drawCard() {
