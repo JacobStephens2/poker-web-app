@@ -30,9 +30,12 @@ let pot = document.querySelector('#pot');
 pot.innerHTML = potValue;
 
 // Give player two cards
-for (let i = 0; i < handSize; i++) {
-  player1Hand[i] = drawCardToHand();
+function givePlayerCards(number) {
+  for (let i = 0; i < number; i++) {
+    player1Hand[i] = drawCardToHand();
+  }
 }
+givePlayerCards(2);
 
 // Function to draw a card to hand
 function drawCardToHand() {
@@ -61,10 +64,13 @@ function fold() {
   // remove cards from shared cards
   document.querySelector('#sharedCards').innerText = '';
   // add two new cards to hand
-  for (let i = 0; i < handSize; i++) {
-    player1Hand[i] = drawCardToHand();
-  }
+  givePlayerCards(2);
+  // reveal the flop button
   flopButton.hidden = false;
+  // empty the pot
+  potValue = 0;
+  pot.innerHTML = potValue;
+
 }
 
 // Bet button
@@ -94,10 +100,12 @@ document.querySelector('#nextRound').after(flopButton);
 function drawTheRiver() {
   let cardsToDraw = 3;
   for (let i = 0; i < cardsToDraw; i++) {
-    drawSharedCard();
+    sharedCards[i] = drawSharedCard();
   }
   flopButton.hidden = true;
 }
+
+console.log(sharedCards);
 
 // Function to draw a card to shared
 function drawSharedCard() {
