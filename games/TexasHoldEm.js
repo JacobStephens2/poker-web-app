@@ -7,10 +7,10 @@ function drawCard() {
   let drawnComponent = DrawComponent(FrenchDeck.length);
   let card = document.createElement('p');
   card.innerText = FrenchDeck[drawnComponent].value + ' of ' + FrenchDeck[drawnComponent].suit;
-  document.querySelector('body').append(card);
+  document.body.append(card);
 }
 
 let DrawButton = document.createElement('button');
 DrawButton.innerText = 'Draw a card';
 DrawButton.addEventListener('click', drawCard)
-document.querySelector('body').append(DrawButton);
+document.body.append(DrawButton);

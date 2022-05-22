@@ -9,5 +9,5 @@ function openTexasHoldEm() {
   const TexasHoldEmScript = document.createElement('script');
   TexasHoldEmScript.src = "/games/TexasHoldEm.js";
   TexasHoldEmScript.type = "module";
-  document.querySelector('head').append(TexasHoldEmScript);
+  document.head.append(TexasHoldEmScript);
 }
