@@ -41,7 +41,7 @@ document.querySelector('#drawACard').addEventListener('click', drawCard)
 document.querySelector('#message').innerText = 'What do you want to do?';
 
 let betButton = document.createElement('button');
-betButton.innerText = 'Bet';
+betButton.innerText = 'Bet $2';
 document.querySelector('#message').after(betButton);
 
 let checkButton = document.createElement('button');
@@ -50,4 +50,8 @@ document.querySelector('#message').after(checkButton);
 
 let foldButton = document.createElement('button');
 foldButton.innerText = 'Fold';
+foldButton.addEventListener('click', fold);
 document.querySelector('#message').after(foldButton);
+function fold() {
+  window.location.href = window.location.href;
+}
