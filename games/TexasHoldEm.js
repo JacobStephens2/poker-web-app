@@ -9,6 +9,12 @@ let player1Hand = {
   1: 'empty'
 }
 
+let player1Chips = 100;
+
+// Show player chip value
+let chips = document.querySelector('#chips');
+chips.innerHTML = player1Chips;
+
 // Function to draw a card
 function drawCardToHand() {
   let drawnComponent = DrawComponent(FrenchDeck.length);
@@ -28,7 +34,7 @@ for (let i = 0; i < initialHandSize; i++) {
 console.log(player1Hand);
 
 // Draw a Card Button
-document.querySelector('button#drawACard').addEventListener('click', drawCardToHand)
+document.querySelector('#drawACard').addEventListener('click', drawCardToHand)
 document.querySelector('h1').after(DrawButton);
 
 // First betting round
