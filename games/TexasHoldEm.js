@@ -39,12 +39,15 @@ document.querySelector('#drawACard').addEventListener('click', drawCard)
 // First betting round
 // Ask player if they want to bet
 document.querySelector('#message').innerText = 'What do you want to do?';
+
 let betButton = document.createElement('button');
 betButton.innerText = 'Bet';
+document.querySelector('#message').after(betButton);
+
 let checkButton = document.createElement('button');
 checkButton.innerText = 'Check';
+document.querySelector('#message').after(checkButton);
+
 let foldButton = document.createElement('button');
 foldButton.innerText = 'Fold';
-document.querySelector('#message').after(betButton);
-document.querySelector('#message').after(checkButton);
 document.querySelector('#message').after(foldButton);
