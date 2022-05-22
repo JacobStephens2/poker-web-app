@@ -3,36 +3,33 @@ import FrenchDeck from "/gameComponents/FrenchDeck.js";
 // Draw component returns a random index value of the array passed into it
 import DrawComponent from "/gameActions/DrawComponent.js";
 
-let playerOneHand = {
+let player1Hand = {
   // indexed at zero
   0: 'empty',
   1: 'empty'
 }
 
 // Function to draw a card
-function drawCard() {
+function drawCardToHand() {
   let drawnComponent = DrawComponent(FrenchDeck.length);
   let cardElement = document.createElement('p');
   let card = FrenchDeck[drawnComponent].value + ' of ' + FrenchDeck[drawnComponent].suit;
   cardElement.innerText = card;
-  document.body.append(cardElement);
+  document.querySelector('#hand').append(cardElement);
   return card;
 }
 
 // Give player initial two cards
-let message = document.createElement('p').innerText = 'Your Initial Hand: ';
-document.querySelector('h1').after(message);
 let initialHandSize = 2;
 for (let i = 0; i < initialHandSize; i++) {
-  playerOneHand[i] = drawCard();
+  player1Hand[i] = drawCardToHand();
 }
 
-console.log(playerOneHand);
+console.log(player1Hand);
 
 // Draw a Card Button
-let DrawButton = document.createElement('button');
-DrawButton.innerText = 'Draw a card';
-DrawButton.addEventListener('click', drawCard)
-document.body.append(DrawButton);
+document.querySelector('button#drawACard').addEventListener('click', drawCardToHand)
+document.querySelector('h1').after(DrawButton);
 
 // First betting round
+// Ask player if they want to bed
