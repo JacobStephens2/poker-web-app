@@ -1,3 +1,4 @@
+// add html nav contents to nav element
 function getNavContents() {
   fetch('/elements/navContents.html')
     .then(response=> response.text())
@@ -5,6 +6,7 @@ function getNavContents() {
 }
 getNavContents();
 
+// add html head contents to head element
 function getHeadContents() {
   fetch('/elements/headContents.html')
     .then(response=> response.text())
