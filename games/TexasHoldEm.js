@@ -3,20 +3,39 @@ import FrenchDeck from "/gameComponents/FrenchDeck.js";
 // Draw component returns a random index value of the array passed into it
 import DrawComponent from "/gameActions/DrawComponent.js";
 
+// Initialize values
 let player1Hand = {
   // indexed at zero
-  0: 'empty',
-  1: 'empty'
+  0: '',
+  1: ''
 }
-
+let sharedCards = {
+  // indexed at zero
+  0: '',
+  1: '',
+  3: '',
+  4: '',
+  5: ''
+}
+let handSize = 2;
 let player1Chips = 100;
+let potValue = 0;
 
 // Show player chip value
 let chips = document.querySelector('#chips');
 chips.innerHTML = player1Chips;
 
-// Function to draw a card
-function drawCard() {
+// Show pot value
+let pot = document.querySelector('#pot');
+pot.innerHTML = potValue;
+
+// Give player two cards
+for (let i = 0; i < handSize; i++) {
+  player1Hand[i] = drawCardToHand();
+}
+
+// Function to draw a card to hand
+function drawCardToHand() {
   let drawnComponent = DrawComponent(FrenchDeck.length);
   let cardElement = document.createElement('p');
   let card = FrenchDeck[drawnComponent].value + ' of ' + FrenchDeck[drawnComponent].suit;
@@ -25,39 +44,67 @@ function drawCard() {
   return card;
 }
 
-// Give player initial two cards
-let initialHandSize = 2;
-for (let i = 0; i < initialHandSize; i++) {
-  player1Hand[i] = drawCard();
-}
-
 console.log(player1Hand);
-
-// Draw a Card Button
-document.querySelector('#drawACard').addEventListener('click', drawCard)
 
 // First betting round
 // Ask player if they want to bet
-document.querySelector('#message').innerText = 'What do you want to do?';
+document.querySelector('#actions').innerText = 'What do you want to do?';
 
+// Fold Button
 let foldButton = document.createElement('button');
 foldButton.innerText = 'Fold';
 foldButton.addEventListener('click', fold);
-document.querySelector('#message').after(foldButton);
+document.querySelector('#actions').after(foldButton);
 function fold() {
-  window.location.href = window.location.href;
+  // remove cards from hand
+  document.querySelector('#hand').innerText = '';
+  // remove cards from shared cards
+  document.querySelector('#sharedCards').innerText = '';
+  // add two new cards to hand
+  for (let i = 0; i < handSize; i++) {
+    player1Hand[i] = drawCardToHand();
+  }
+  flopButton.hidden = false;
 }
 
+// Bet button
 let betButton = document.createElement('button');
 betButton.innerText = 'Bet $2';
 betButton.addEventListener('click', bet);
-document.querySelector('#message').after(betButton);
+document.querySelector('#actions').after(betButton);
 function bet() {
+  // remove $2 from player chips
   player1Chips = player1Chips - 2;
   chips.innerHTML = player1Chips;
+  // add $2 to pot
+  potValue = potValue + 2;
+  pot.innerHTML = potValue;
 }
 
+// Check button
 let checkButton = document.createElement('button');
 checkButton.innerText = 'Check';
-document.querySelector('#message').after(checkButton);
+document.querySelector('#actions').after(checkButton);
 
+// Draw the flop button
+let flopButton = document.createElement('button');
+flopButton.innerText = 'Draw the Flop';
+flopButton.addEventListener('click', drawTheRiver);
+document.querySelector('#nextRound').after(flopButton);
+function drawTheRiver() {
+  let cardsToDraw = 3;
+  for (let i = 0; i < cardsToDraw; i++) {
+    drawSharedCard();
+  }
+  flopButton.hidden = true;
+}
+
+// Function to draw a card to shared
+function drawSharedCard() {
+  let drawnComponent = DrawComponent(FrenchDeck.length);
+  let cardElement = document.createElement('p');
+  let card = FrenchDeck[drawnComponent].value + ' of ' + FrenchDeck[drawnComponent].suit;
+  cardElement.innerText = card;
+  document.querySelector('#sharedCards').append(cardElement);
+  return card;
+}
