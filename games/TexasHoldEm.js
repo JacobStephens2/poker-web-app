@@ -101,9 +101,9 @@ document.querySelector('#actions').after(checkButton);
 // Draw the flop button
 let flopButton = document.createElement('button');
 flopButton.innerText = 'Draw the Flop';
-flopButton.addEventListener('click', drawTheRiver);
+flopButton.addEventListener('click', drawTheFlop);
 document.querySelector('#nextRound').after(flopButton);
-function drawTheRiver() {
+function drawTheFlop() {
   let cardsToDraw = 3;
   for (let i = 0; i < cardsToDraw; i++) {
     sharedCards[i] = drawSharedCard();
