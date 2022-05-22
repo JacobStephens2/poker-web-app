@@ -1,6 +1,6 @@
 // This French Deck creation code (createDeck() and the suits and values variables) 
-// is from Walter Guevara
-// at https://www.thatsoftwaredude.com/content/6196/coding-a-card-deck-in-javascript
+// is from Walter Guevara at
+// https://www.thatsoftwaredude.com/content/6196/coding-a-card-deck-in-javascript
 
 const suits = ["spades", "diamonds", "clubs", "hearts"];
 
