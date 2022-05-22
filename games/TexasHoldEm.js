@@ -16,7 +16,7 @@ let chips = document.querySelector('#chips');
 chips.innerHTML = player1Chips;
 
 // Function to draw a card
-function drawCardToHand() {
+function drawCard() {
   let drawnComponent = DrawComponent(FrenchDeck.length);
   let cardElement = document.createElement('p');
   let card = FrenchDeck[drawnComponent].value + ' of ' + FrenchDeck[drawnComponent].suit;
@@ -28,14 +28,23 @@ function drawCardToHand() {
 // Give player initial two cards
 let initialHandSize = 2;
 for (let i = 0; i < initialHandSize; i++) {
-  player1Hand[i] = drawCardToHand();
+  player1Hand[i] = drawCard();
 }
 
 console.log(player1Hand);
 
 // Draw a Card Button
-document.querySelector('#drawACard').addEventListener('click', drawCardToHand)
-document.querySelector('h1').after(DrawButton);
+document.querySelector('#drawACard').addEventListener('click', drawCard)
 
 // First betting round
-// Ask player if they want to bed
+// Ask player if they want to bet
+document.querySelector('#message').innerText = 'What do you want to do?';
+let betButton = document.createElement('button');
+betButton.innerText = 'Bet';
+let checkButton = document.createElement('button');
+checkButton.innerText = 'Check';
+let foldButton = document.createElement('button');
+foldButton.innerText = 'Fold';
+document.querySelector('#message').after(betButton);
+document.querySelector('#message').after(checkButton);
+document.querySelector('#message').after(foldButton);
