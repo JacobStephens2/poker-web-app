@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="App.js"></script>
   <script type="module" src="games/TexasHoldEm.js"></script>
   <title>Texas Hold'Em</title>
 </head>
+
 <body>
   <nav></nav>
   <h1>Texas Hold'Em</h1>
-  <button id="drawACard">Draw a card</button>
+  <p id="message"></p>
   <section>
-    <p>Your Chips</p>
-    <p id="chips"></p>
+    <p>
+      <span>Your Chips: </span><span id="chips"></span>
+    </p>
   </section>
+  <button id="drawACard">Draw a card</button>
   <section id="hand">
     <p>Your Hand</p>
   </section>
 </body>
+
 </html>

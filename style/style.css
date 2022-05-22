@@ -1,0 +1,11 @@
+/* Add space around elements and window edge */
+body {
+  margin: 0.7rem;
+}
+/* Add space between nav items */
+nav a+a {
+  margin-left: 0.4rem;
+}
+button+button {
+  margin-left: 0.6rem;
+}
