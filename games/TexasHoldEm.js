@@ -3,12 +3,18 @@ import FrenchDeck from "/gameComponents/FrenchDeck.js";
 // Draw component returns a random index value of the array passed into it
 import DrawComponent from "/gameActions/DrawComponent.js";
 
-// Initialize values
 let player1Hand = {
   // indexed at zero
   0: '',
   1: ''
 }
+
+// Initialize values
+sessionStorage.setItem('player1Hand', JSON.stringify(player1Hand));
+
+let playerOneHand = localStorage.getItem('player1Hand');
+console.log(JSON.parse(playerOneHand));
+
 let sharedCards = {
   // indexed at zero
   0: '',
