@@ -10,9 +10,9 @@ function createDeck() {
   let deck = new Array();
   for (let i = 0; i < suits.length; i++) {
     for (let x = 0; x < values.length; x++) {
-      let card = { 
-        value: values[x], 
-        suit: suits[i] 
+      let card = {
+        value: values[x],
+        suit: suits[i]
       };
       deck.push(card);
     }
